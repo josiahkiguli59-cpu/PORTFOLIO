@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Josiah K | Personal Portfolio</title>
+    <meta
+      name="description"
+      content="Josiah K - Creative developer and digital designer building simple, bold experiences."
+    />
+    <style>
+      :root {
+        --bg: #f5f0ea;
+        --bg-deep: #efe5dc;
+        --panel: rgba(255, 255, 255, 0.72);
+        --panel-strong: #fff8f2;
+        --text: #1c1b1a;
+        --muted: #5f5a55;
+        --primary: #ef9d4e;
+        --primary-strong: #d9802d;
+        --secondary: #2f2e2d;
+        --accent: #ef9d4e;
+        --border: rgba(24, 20, 17, 0.08);
+        --shadow: 0 18px 40px rgba(78, 52, 32, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(239, 157, 78, 0.12),
+            transparent 22%
+          ),
+          radial-gradient(
+            circle at bottom right,
+            rgba(239, 157, 78, 0.08),
+            transparent 26%
+          ),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1200px, calc(100% - 2.5rem));
+        margin: 0 auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(14px);
+        background: rgba(255, 255, 255, 0.5);
+        border-bottom: 1px solid rgba(28, 27, 26, 0.06);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 72px;
+        gap: 1rem;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-size: 1.3rem;
+        line-height: 1;
+        color: var(--text);
+        position: relative;
+      }
+
+      .brand span {
+        color: var(--text);
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
+      }
+
+      .brand::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -0.6rem;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary), transparent);
+        transition: width 0.25s ease;
+      }
+
+      .brand:hover::after {
+        width: 100%;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 1.6rem;
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+
+      nav a {
+        position: relative;
+        transition: color 0.2s ease;
+      }
+
+      nav a:hover {
+        color: var(--text);
+      }
+
+      nav a:first-child::after,
+      nav a:hover::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -0.8rem;
+        width: 100%;
+        height: 2px;
+        background: var(--primary);
+        border-radius: 50px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.9rem 1.5rem;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        font-weight: 700;
+        font-size: 1.02rem;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          border-color 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+      }
+
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-strong)
+        );
+        border-color: transparent;
+        color: #1f120c;
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.3);
+        color: var(--text);
+        border-color: rgba(28, 27, 26, 0.08);
+      }
+
+      .hero {
+        padding: 5rem 0 3rem;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 0.45rem 0.8rem;
+        border-radius: 999px;
+        background: rgba(239, 157, 78, 0.12);
+        border: 1px solid rgba(239, 157, 78, 0.26);
+        color: var(--primary-strong);
+        font-size: 0.76rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 6vw, 5rem);
+        line-height: 0.95;
+        margin: 0 0 1rem;
+        letter-spacing: -0.06em;
+      }
+
+      .gradient-text {
+        background: linear-gradient(
+          135deg,
+          var(--primary-strong),
+          var(--primary),
+          #d77a35
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .lead {
+        color: var(--muted);
+        font-size: 1.1rem;
+        max-width: 620px;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.5rem;
+        margin-bottom: 0.2rem;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .profile-card {
+        position: relative;
+        padding: 1rem;
+        border-radius: 28px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.5),
+          rgba(255, 255, 255, 0.35)
+        );
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      .profile-card::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        background: linear-gradient(
+          135deg,
+          rgba(239, 157, 78, 0.2),
+          rgba(239, 157, 78, 0.06),
+          rgba(255, 255, 255, 0.18)
+        );
+        z-index: -1;
+        filter: blur(16px);
+        opacity: 1;
+      }
+
+      .portrait {
+        border-radius: 22px;
+        overflow: hidden;
+        min-height: 520px;
+        background:
+          linear-gradient(
+            160deg,
+            rgba(239, 157, 78, 0.14),
+            rgba(255, 255, 255, 0.1)
+          ),
+          url("person-photo.jpeg") center top/cover no-repeat;
+        position: relative;
+        transform: scale(1.02);
+      }
+
+      .portrait-badge {
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(28, 27, 26, 0.08);
+        border-radius: 18px;
+        padding: 0.8rem 1rem;
+        backdrop-filter: blur(8px);
+        color: var(--text);
+      }
+
+      .portrait-badge strong {
+        display: block;
+        font-size: 1.3rem;
+      }
+
+      section {
+        padding: 4rem 0;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3rem);
+        letter-spacing: -0.04em;
+      }
+
+      .section-header p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 520px;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+      }
+
+      .card p {
+        color: var(--muted);
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .mini-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .mini-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 1rem;
+      }
+
+      .mini-card strong {
+        display: block;
+        margin-bottom: 0.4rem;
+      }
+
+      .mini-card span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .services,
+      .projects,
+      .contact {
+        background: rgba(255, 255, 255, 0.01);
+      }
+
+      .service-grid,
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      .service-item,
+      .project-item {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 1.5rem;
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease;
+      }
+
+      .service-item:hover,
+      .project-item:hover {
+        transform: translateY(-6px);
+        border-color: rgba(124, 156, 255, 0.5);
+      }
+
+      .icon {
+        width: 48px;
+        height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          135deg,
+          rgba(124, 156, 255, 0.2),
+          rgba(112, 240, 209, 0.14)
+        );
+        border: 1px solid rgba(124, 156, 255, 0.3);
+        border-radius: 14px;
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+      }
+
+      .service-item h3,
+      .project-item h3 {
+        margin: 0 0 0.7rem;
+        font-size: 1.2rem;
+      }
+
+      .service-item p,
+      .project-item p {
+        margin: 0 0 1rem;
+        color: var(--muted);
+      }
+
+      .project-item {
+        overflow: hidden;
+      }
+
+      .thumb {
+        min-height: 220px;
+        border-radius: 16px;
+        margin-bottom: 1rem;
+        border: 1px solid var(--border);
+        background-size: cover;
+        background-position: center;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 0.35rem 0.65rem;
+        border-radius: 999px;
+        background: rgba(255, 184, 108, 0.12);
+        border: 1px solid rgba(255, 184, 108, 0.3);
+        color: var(--accent);
+        font-size: 0.74rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+      }
+
+      .contact-wrap {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 1.5rem;
+        align-items: stretch;
+      }
+
+      .info-list {
+        margin-top: 1.25rem;
+        display: grid;
+        gap: 0.8rem;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        color: var(--muted);
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--secondary), var(--primary));
+        box-shadow: 0 0 16px rgba(112, 240, 209, 0.7);
+      }
+
+      form {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 0.9rem 1rem;
+        font: inherit;
+        resize: vertical;
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: #8b99b9;
+      }
+
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 1.5rem 0 2rem;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .about-grid,
+        .contact-wrap,
+        .service-grid,
+        .project-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-header {
+          display: block;
+        }
+
+        .section-header p {
+          margin-top: 0.75rem;
+        }
+      }
+
+      @media (max-width: 640px) {
+        nav {
+          display: none;
+        }
+
+        .row,
+        .stats,
+        .mini-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding-top: 4rem;
+        }
+
+        .portrait {
+          min-height: 420px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <a href="#top" class="brand">
+          <span>JOSIAH K</span>
+        </a>
+        <nav>
+          <a href="#about">Home</a>
+          <a href="#services">About</a>
+          <a href="#projects">Services</a>
+          <a href="#contact">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a href="#contact" class="btn btn-primary">Let’s Talk</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow">Creative developer</div>
+            <h1>
+              I build
+              <span class="gradient-text">bold digital</span><br />
+              experiences that<br />
+              feel effortless.
+            </h1>
+            <p class="lead">
+              I’m Josiah K, a digital designer and developer focused on helping
+              brands grow through clear strategy, high-converting design, and
+              smooth user experiences.
+            </p>
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary">View My Work →</a>
+              <a href="#about" class="btn btn-secondary">About Me</a>
+            </div>
+            <div class="stats">
+              <div class="stat">
+                <strong>6+</strong>
+                <span>Years Experience</span>
+              </div>
+              <div class="stat">
+                <strong>32+</strong>
+                <span>Projects Shipped</span>
+              </div>
+              <div class="stat">
+                <strong>100%</strong>
+                <span>Client Focus</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-card">
+            <div class="portrait" aria-label="Portrait of Josiah K">
+              <div class="portrait-badge">
+                <strong>JOSIAH</strong>
+                <span>creative developer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <div class="section-header">
+            <h2>About me</h2>
+            <p>
+              I combine design thinking with technical execution to create
+              experiences that are polished, purposeful, and memorable.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <div class="card">
+              <p>
+                I help businesses stand out online by turning ideas into refined
+                digital products. My work blends strategy, branding, and
+                front-end development so every project looks strong and works
+                beautifully across devices.
+              </p>
+              <div class="mini-grid">
+                <div class="mini-card">
+                  <strong>Brand Design</strong>
+                  <span>Identity systems and visual direction</span>
+                </div>
+                <div class="mini-card">
+                  <strong>UX Strategy</strong>
+                  <span>Customer journeys and interface clarity</span>
+                </div>
+                <div class="mini-card">
+                  <strong>Web Build</strong>
+                  <span>Responsive, high-performance web experiences</span>
+                </div>
+                <div class="mini-card">
+                  <strong>Optimization</strong>
+                  <span>Conversion-focused improvements and testing</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <p>
+                Whether it’s a portfolio, landing page, or full business
+                website, I focus on creating simpler, clearer experiences that
+                earn trust and drive action. My approach is practical,
+                collaborative, and built around what your audience actually
+                needs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="services">
+        <div class="container">
+          <div class="section-header">
+            <h2>What I do</h2>
+            <p>
+              From strategy to final launch, I build digital experiences that
+              feel premium and perform with purpose.
+            </p>
+          </div>
+
+          <div class="service-grid">
+            <article class="service-item">
+              <div class="icon">✦</div>
+              <h3>Brand & Positioning</h3>
+              <p>
+                Clear messaging, visual identity, and creative direction that
+                help your brand feel confident and memorable.
+              </p>
+            </article>
+
+            <article class="service-item">
+              <div class="icon">▣</div>
+              <h3>Web Design</h3>
+              <p>
+                Clean, modern interfaces designed to look polished while guiding
+                users toward the right action.
+              </p>
+            </article>
+
+            <article class="service-item">
+              <div class="icon">⚡</div>
+              <h3>Development</h3>
+              <p>
+                Responsive front-end builds that balance design quality, speed,
+                and smooth user experience.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="projects">
+        <div class="container">
+          <div class="section-header">
+            <h2>Featured work</h2>
+            <p>
+              Recent projects focused on clarity, conversion, and strong visual
+              storytelling.
+            </p>
+          </div>
+
+          <div class="project-grid">
+            <article class="project-item">
+              <div
+                class="thumb"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80&quot;);
+                "
+              ></div>
+              <span class="tag">UI / Branding</span>
+              <h3>Dribbble-style Product Concept</h3>
+              <p>
+                Premium SaaS landing page concept focused on clarity, trust, and
+                polished conversion-driven storytelling.
+              </p>
+            </article>
+
+            <article class="project-item">
+              <div
+                class="thumb"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80&quot;);
+                "
+              ></div>
+              <span class="tag">Web Experience</span>
+              <h3>Pinterest-inspired Portfolio</h3>
+              <p>
+                A modern portfolio layout for creative professionals, combining
+                storytelling, strong spacing, and visual hierarchy.
+              </p>
+            </article>
+
+            <article class="project-item">
+              <div
+                class="thumb"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80&quot;);
+                "
+              ></div>
+              <span class="tag">Creative Direction</span>
+              <h3>Behance-style Launch Page</h3>
+              <p>
+                A bold launch design for a service brand built to attract
+                premium clients through product clarity and mood.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="container">
+          <div class="section-header">
+            <h2>Let’s build something great</h2>
+            <p>
+              Ready to create a stronger online presence? I’d love to hear what
+              you’re working on.
+            </p>
+          </div>
+
+          <div class="contact-wrap">
+            <div class="card">
+              <p>
+                Tell me about your project, your goals, and the experience you
+                want to create.
+              </p>
+              <div class="info-list">
+                <div class="info-item">
+                  <span class="dot"></span> WhatsApp: +256787063953
+                </div>
+                <div class="info-item">
+                  <span class="dot"></span> Email: josiahkiguli59@gmail.com
+                </div>
+                <div class="info-item">
+                  <span class="dot"></span> Location: Uganda, Kampala
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <form id="contactForm">
+                <div class="row">
+                  <input
+                    id="name"
+                    type="text"
+                    name="name"
+                    placeholder="Your name"
+                    required
+                  />
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="Email address"
+                    required
+                  />
+                </div>
+                <input
+                  id="project"
+                  type="text"
+                  name="project"
+                  placeholder="Project title"
+                  required
+                />
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="Tell me about your idea..."
+                  required
+                ></textarea>
+                <button type="submit" class="btn btn-primary">
+                  Send Inquiry
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">© 2026 Josiah K. All rights reserved.</div>
+    </footer>
+
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const name = document.getElementById("name").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const project = document.getElementById("project").value.trim();
+          const message = document.getElementById("message").value.trim();
+
+          const text = encodeURIComponent(
+            `Hello Josiah,\n\nNew project inquiry:\nName: ${name || "Not provided"}\nEmail: ${email || "Not provided"}\nProject: ${project || "Not provided"}\nMessage: ${message || "Not provided"}`,
+          );
+
+          const whatsappUrl = `https://wa.me/256787063953?text=${text}`;
+          window.open(whatsappUrl, "_blank");
+
+          this.reset();
+        });
+    </script>
+  </body>
+</html>
